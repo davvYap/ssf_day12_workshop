@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result</title>
+</head>
+<body>
+    <h1>Your list of <span data-th-text="${RandomNumbers}"></span> Random Numbers</h1>
+
+    <ul data-th-each="img : ${Results}">
+        <li data-th-text="${img}"></li>
+        <img data-th-src="@{${'/images/' + img}}" height="300" width="300">
+    </ul>
+</body>
+</html>
