@@ -59,18 +59,32 @@ public class GenerateRandController {
         List<String> selectedImg = new ArrayList<String>();
         Random rand = new Random();
         // the Set is to handle the unique numbers
-        Set<Integer> uniqueResults = new LinkedHashSet<Integer>();
+        // Set<Integer> uniqueResults = new LinkedHashSet<Integer>();
 
-        while(uniqueResults.size() < noOfGeneration){
-            int randNumberVal = rand.nextInt(maxGenNo);
-            uniqueResults.add(randNumberVal);
-        }
+        // while(uniqueResults.size() < noOfGeneration){
+        //     int randNumberVal = rand.nextInt(maxGenNo);
+        //     uniqueResults.add(randNumberVal);
+        // }
 
-        Iterator<Integer> z = uniqueResults.iterator();
-        Integer currElemenet = null;
-        while(z.hasNext()){
-            currElemenet = z.next();
-            selectedImg.add(imgNumbers[currElemenet.intValue()]);
+        // Iterator<Integer> z = uniqueResults.iterator();
+        // Integer currElemenet = null;
+        // while(z.hasNext()){
+        //     currElemenet = z.next();
+        //     selectedImg.add(imgNumbers[currElemenet.intValue()]);
+        // }
+
+        // to try using List
+        while(selectedImg.size() < noOfGeneration){
+            for (int i = 0; i < noOfGeneration; i++) {
+                int randNumVal2 = rand.nextInt(maxGenNo);
+                if(selectedImg.contains(imgNumbers[randNumVal2])){
+                    continue;
+                }else if(selectedImg.size() < noOfGeneration){
+                    selectedImg.add(imgNumbers[randNumVal2]);
+                }else{
+                    break;
+                }
+            }
         }
 
         model.addAttribute("RandomNumbers", noOfGeneration);
